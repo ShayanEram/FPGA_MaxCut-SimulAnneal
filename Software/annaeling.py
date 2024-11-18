@@ -8,7 +8,10 @@ MAX_ITER = 10000
 ALPHA = 0.95
 
 def generateInitialSolution(graph):
-    solution = {v: random.choice([-1, 1]) for v in set(i for edge in graph.keys() for i in edge)}
+    solution = {}
+    for edge in graph.keys():
+        for i in edge:
+            solution[i] = random.choice([-1, 1])
     return solution
 
 def calculateEnergy(solution, graph):
