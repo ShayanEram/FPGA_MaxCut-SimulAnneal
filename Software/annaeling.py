@@ -1,10 +1,10 @@
 import random
 import math
 
-# Constants
-INITIAL_TEMP = 10000
-FINAL_TEMP = 1
-MAX_ITER = 10000
+INITIAL_TEMP = 20
+FINAL_TEMP = 0.01
+MAX_ITER = 2500000
+E_THRESH = 0.0001
 ALPHA = 0.95
 
 def generateInitialSolution(graph):
@@ -33,6 +33,9 @@ def generateNeighbor(current_solution, vertex):
 def coolDown(temperature):
     return temperature * ALPHA
 
+def acceptanceProbability(deltaEnergy, temperature):
+    return math.exp(-deltaEnergy / temperature)
+
 def simulatedAnnealing(graph):
     
     currentSolution = generateInitialSolution(graph)
@@ -55,7 +58,8 @@ def simulatedAnnealing(graph):
             deltaEnergy = newEnergy - currentEnergy
 
             # 5. Acceptance Criteria
-            if deltaEnergy <= 0 or random.random() < math.exp(-deltaEnergy / temperature):
+            prob = acceptanceProbability(deltaEnergy, temperature)
+            if deltaEnergy <= 0 or random.random() < prob:
                 
                 # 6. Update current solution
                 currentSolution = newSolution
@@ -64,6 +68,10 @@ def simulatedAnnealing(graph):
             # 7. Update temperature
             temperature = coolDown(temperature)
             if temperature == 0:
+                break
+
+            # 8. Check for convergence
+            if temperature <= FINAL_TEMP and deltaEnergy <= E_THRESH:
                 break
 
     return currentSolution, currentEnergy
