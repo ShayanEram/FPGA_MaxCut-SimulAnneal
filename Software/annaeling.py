@@ -5,67 +5,79 @@ INITIAL_TEMP = 20
 FINAL_TEMP = 0.01
 MAX_ITER = 2500000
 E_THRESH = 0.0001
-ALPHA = 0.95
+K_B = 1.0
 
-def generateInitialSolution(graph):
-    solution = {}
-    for edge in graph.keys():
-        for i in edge:
-            solution[i] = random.choice([-1, 1])
-    return solution
+def generateInitialSolution(size):
+    state = []
+    for _ in range(size):
+        state.append(random.choice([-1.0, 1.0]))
+    return state
 
-def calculateEnergy(solution, graph):
-    energy = 0
-    for (i, j), weight in graph.items():
-        if solution[i] != solution[j]:  # Different sets
-            energy += weight
-    return energy
+def calculateEnergy(state, edges):
+    wijSum = 0
+    for i in range(len(state)):
+        for j in range(len(state)):
+            wijSum += edges[i][j]
+    
+    eTerm = 0
+    for i in range(len(state)):
+        for j in range(len(state)):
+            eTerm += state[i] * edges[i][j] * state[j]
+    
+    return -0.25 * (wijSum - eTerm)
 
-def selectRandomVertex(solution):
-    vertex = random.choice(list(solution.keys()))
-    return vertex
+def selectRandomVertex(state):
+    return random.choice(range(len(state)))
 
-def generateNeighbor(current_solution, vertex):
-    new_solution = current_solution.copy()
-    new_solution[vertex] *= -1  # Flip from -1 to 1 or vice versa
-    return new_solution
+def generateNeighbor(state, index, edges):
+    local_field_value = 0
+    for j in range(len(state)):
+        local_field_value += edges[index][j] * state[j]
+    return local_field_value
 
-def coolDown(temperature):
-    return temperature * ALPHA
+def coolDown(temp, k):
+    percentage = (k + 1) / MAX_ITER
+    if int(1000 * percentage) % 2 == 0:
+        return 0.99999 * temp
+    else:
+        return temp
 
 def acceptanceProbability(deltaEnergy, temperature):
-    return math.exp(-deltaEnergy / temperature)
+    if deltaEnergy <= 0:
+        return 1  # Always accept if energy decreases
+    else:
+        return math.exp(-deltaEnergy / (K_B * temperature))
 
-def simulatedAnnealing(graph):
+def simulatedAnnealing(matrix):
     
-    currentSolution = generateInitialSolution(graph)
-    currentEnergy = calculateEnergy(currentSolution, graph)
+    currentSolution = generateInitialSolution(len(matrix))
+    currentEnergy = calculateEnergy(currentSolution, matrix)
     temperature = INITIAL_TEMP
 
-    for _ in range(MAX_ITER):
+    for k in range(MAX_ITER):
         
         # 1. Select a random vertex
-        vertex = selectRandomVertex(currentSolution)
+        vertexIndex = selectRandomVertex(currentSolution)
         
         # 2. Generate a neighbor
-        newSolution = generateNeighbor(currentSolution, vertex)
+        newSolution = generateNeighbor(currentSolution, vertexIndex, matrix)
 
         # 3. Calculate the new energy
-        newEnergy = calculateEnergy(newSolution, graph)
+        # not needed as we are using the local field value
 
         # 4. Calculate Energy Difference
-        deltaEnergy = newEnergy - currentEnergy
+        deltaEnergy = -currentSolution[vertexIndex] * newSolution
 
         # 5. Acceptance Criteria
         prob = acceptanceProbability(deltaEnergy, temperature)
-        if deltaEnergy <= 0 or random.random() < prob:
+        if random.random() <= prob:
             
             # 6. Update current solution
-            currentSolution = newSolution
-            currentEnergy = newEnergy
+            currentSolution[vertexIndex] = -1.0 * currentSolution[vertexIndex]
+            currentEnergy += deltaEnergy
 
         # 7. Update temperature
-        temperature = coolDown(temperature)
+        temperature = coolDown(temperature, k)
         if temperature == 0:
             break
 
@@ -78,7 +90,7 @@ def simulatedAnnealing(graph):
 
 if __name__ == "__main__":
     
-    # Define a graph as a dictionary of edges with weights
+    # Define a matrix as a dictionary of edges with weights
     graph = {
         (0, 1): 1,
         (0, 2): 2,
@@ -87,7 +99,13 @@ if __name__ == "__main__":
         (2, 3): 5
     }
 
-    best_solution, best_energy = simulatedAnnealing(graph)
+    size = 4  # Number of vertices
+    adjacency_matrix = [[0] * size for _ in range(size)]
+    for (i, j), weight in graph.items():
+        adjacency_matrix[i][j] = weight
+        adjacency_matrix[j][i] = weight
+
+    best_solution, best_energy = simulatedAnnealing(adjacency_matrix)
 
     print("Best Cut Energy:", best_energy)
     print("Best State:", best_solution)
