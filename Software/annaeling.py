@@ -42,37 +42,36 @@ def simulatedAnnealing(graph):
     currentEnergy = calculateEnergy(currentSolution, graph)
     temperature = INITIAL_TEMP
 
-    while temperature > FINAL_TEMP:
-        for _ in range(MAX_ITER):
+    for _ in range(MAX_ITER):
+        
+        # 1. Select a random vertex
+        vertex = selectRandomVertex(currentSolution)
+        
+        # 2. Generate a neighbor
+        newSolution = generateNeighbor(currentSolution, vertex)
+
+        # 3. Calculate the new energy
+        newEnergy = calculateEnergy(newSolution, graph)
+
+        # 4. Calculate Energy Difference
+        deltaEnergy = newEnergy - currentEnergy
+
+        # 5. Acceptance Criteria
+        prob = acceptanceProbability(deltaEnergy, temperature)
+        if deltaEnergy <= 0 or random.random() < prob:
             
-            # 1. Select a random vertex
-            vertex = selectRandomVertex(currentSolution)
-            
-            # 2. Generate a neighbor
-            newSolution = generateNeighbor(currentSolution, vertex)
+            # 6. Update current solution
+            currentSolution = newSolution
+            currentEnergy = newEnergy
 
-            # 3. Calculate the new energy
-            newEnergy = calculateEnergy(newSolution, graph)
+        # 7. Update temperature
+        temperature = coolDown(temperature)
+        if temperature == 0:
+            break
 
-            # 4. Calculate Energy Difference
-            deltaEnergy = newEnergy - currentEnergy
-
-            # 5. Acceptance Criteria
-            prob = acceptanceProbability(deltaEnergy, temperature)
-            if deltaEnergy <= 0 or random.random() < prob:
-                
-                # 6. Update current solution
-                currentSolution = newSolution
-                currentEnergy = newEnergy
-
-            # 7. Update temperature
-            temperature = coolDown(temperature)
-            if temperature == 0:
-                break
-
-            # 8. Check for convergence
-            if temperature <= FINAL_TEMP and deltaEnergy <= E_THRESH:
-                break
+        # 8. Check for convergence
+        if temperature <= FINAL_TEMP and deltaEnergy <= E_THRESH:
+            break
 
     return currentSolution, currentEnergy
 
