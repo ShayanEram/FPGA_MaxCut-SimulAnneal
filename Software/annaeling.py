@@ -1,82 +1,81 @@
-import numpy as np
 import random
 import math
 
 # Constants
-INITIAL_TEMP = 30.0
-FINAL_TEMP = 0.1
-MAX_ITER = 1000
+INITIAL_TEMP = 10000
+FINAL_TEMP = 1
+MAX_ITER = 10000
+ALPHA = 0.95
 
-# Function to calculate the energy of a given state
-def generateInitialSolution(n):
-    return [random.randint(0, 1) for _ in range(n)]
+def generateInitialSolution(graph):
+    solution = {v: random.choice([-1, 1]) for v in set(i for edge in graph.keys() for i in edge)}
+    return solution
 
-# Function to generate an initial random solution
-def calculateEnergy(state, graph):
+def calculateEnergy(solution, graph):
     energy = 0
-    n = len(state)
-    for i in range(n):
-        for j in range(i + 1, n):
-            if state[i] != state[j]:  # If vertices are in different sets
-                energy += graph[i][j]  # Add the weight of the edge
+    for (i, j), weight in graph.items():
+        if solution[i] != solution[j]:  # Different sets
+            energy += weight
     return energy
 
-# Function to generate a neighbor by flipping a random vertex
-def generateNeighbor(current_solution):
-    neighbor = current_solution.copy()
-    flip_index = random.randint(0, len(current_solution) - 1)
-    neighbor[flip_index] = 1 - neighbor[flip_index]  # Flip the state
-    return neighbor
+def selectRandomVertex(solution):
+    vertex = random.choice(list(solution.keys()))
+    return vertex
 
-# Function to cool down the temperature
+def generateNeighbor(current_solution, vertex):
+    new_solution = current_solution.copy()
+    new_solution[vertex] *= -1  # Flip from -1 to 1 or vice versa
+    return new_solution
+
 def coolDown(temperature):
-    return temperature * 0.99  # Simple cooling schedule
+    return temperature * ALPHA
 
-# Function to perform simulated annealing
 def simulatedAnnealing(graph):
     
-    n = len(graph)
-    
-    currentSolution = generateInitialSolution(n)
-    bestSolution = currentSolution
+    currentSolution = generateInitialSolution(graph)
+    currentEnergy = calculateEnergy(currentSolution, graph)
     temperature = INITIAL_TEMP
-    bestEnergy = calculateEnergy(currentSolution, graph)
 
-    #while temperature > FINAL_TEMP:
-    for _ in range(MAX_ITER):
-        newSolution = generateNeighbor(currentSolution)
-        newEnergy = calculateEnergy(newSolution, graph)
+    while temperature > FINAL_TEMP:
+        for _ in range(MAX_ITER):
+            
+            # 1. Select a random vertex
+            vertex = selectRandomVertex(currentSolution)
+            
+            # 2. Generate a neighbor
+            newSolution = generateNeighbor(currentSolution, vertex)
 
-        deltaEnergy = newEnergy - bestEnergy
+            # 3. Calculate the new energy
+            newEnergy = calculateEnergy(newSolution, graph)
 
-        # Acceptance criterion
-        if deltaEnergy <= 0:
-            currentSolution = newSolution
-            bestEnergy = newEnergy
+            # 4. Calculate Energy Difference
+            deltaEnergy = newEnergy - currentEnergy
 
-        elif deltaEnergy > 0 or random() < math.exp(-deltaEnergy / temperature):
-            currentSolution = newSolution
+            # 5. Acceptance Criteria
+            if deltaEnergy <= 0 or random.random() < math.exp(-deltaEnergy / temperature):
+                
+                # 6. Update current solution
+                currentSolution = newSolution
+                currentEnergy = newEnergy
 
-        # Update best solution
-        if calculateEnergy(currentSolution, graph) < bestEnergy:
-            bestEnergy = calculateEnergy(currentSolution, graph)
-            bestSolution = currentSolution
+            # 7. Update temperature
+            temperature = coolDown(temperature)
+            if temperature == 0:
+                break
 
-        temperature = coolDown(temperature)
-
-    return bestSolution, bestEnergy
-
+    return currentSolution, currentEnergy
 
 
 if __name__ == "__main__":
     
-    graph = [
-        [0, 1, 1, 0, 0],  # Edges for vertex 0
-        [1, 0, 0, 1, 1],  # Edges for vertex 1
-        [1, 0, 0, 1, 0],  # Edges for vertex 2
-        [0, 1, 1, 0, 1],  # Edges for vertex 3
-        [0, 1, 0, 1, 0]   # Edges for vertex 4
-    ]
+    # Define a graph as a dictionary of edges with weights
+    graph = {
+        (0, 1): 1,
+        (0, 2): 2,
+        (1, 2): 3,
+        (1, 3): 4,
+        (2, 3): 5
+    }
 
     best_solution, best_energy = simulatedAnnealing(graph)
 
