@@ -2,9 +2,9 @@ import random
 import math
 
 INITIAL_TEMP = 20
-FINAL_TEMP = 0.01
+FINAL_TEMP = 0.0001
 MAX_ITER = 2500000
-E_THRESH = 0.0001
+E_THRESH = 0.1
 K_B = 1.0
 
 def generateInitialSolution(size):
@@ -85,27 +85,32 @@ def simulatedAnnealing(matrix):
         if temperature <= FINAL_TEMP and deltaEnergy <= E_THRESH:
             break
 
-    return currentSolution, currentEnergy
+    # return currentSolution, currentEnergy
+    print(len(currentSolution), currentSolution, temperature, currentEnergy)
 
 
 if __name__ == "__main__":
     
-    # Define a matrix as a dictionary of edges with weights
-    graph = {
-        (0, 1): 1,
-        (0, 2): 2,
-        (1, 2): 3,
-        (1, 3): 4,
-        (2, 3): 5
-    }
+    J = [[0., 1., 1., 1., 0., 1., 1., 0., 0., 1.],
+         [1., 0., 0., 1., 1., 0., 0., 1., 1., 0.],
+         [1., 0., 0., 0., 0., 0., 1., 1., 1., 0.],
+         [1., 1., 0., 0., 0., 0., 0., 1., 0., 1.],
+         [0., 1., 0., 0., 0., 0., 1., 1., 0., 0.],
+         [1., 0., 0., 0., 0., 0., 0., 0., 1., 0.],
+         [1., 0., 1., 0., 1., 0., 0., 0., 1., 1.],
+         [0., 1., 1., 1., 1., 0., 0., 0., 1., 1.],
+         [0., 1., 1., 0., 0., 1., 1., 1., 0., 1.],
+         [1., 0., 0., 1., 0., 0., 1., 1., 1., 0.]]
 
-    size = 4  # Number of vertices
-    adjacency_matrix = [[0] * size for _ in range(size)]
-    for (i, j), weight in graph.items():
-        adjacency_matrix[i][j] = weight
-        adjacency_matrix[j][i] = weight
+    # best_solution, best_energy = simulatedAnnealing(adjacency_matrix)
 
-    best_solution, best_energy = simulatedAnnealing(adjacency_matrix)
+    # print("Best Cut Energy:", best_energy)
+    # print("Best State:", best_solution)
 
-    print("Best Cut Energy:", best_energy)
-    print("Best State:", best_solution)
+    times = 2
+
+    for i in range(times):
+        simulatedAnnealing(J)
+
+    # 10 [1.0, -1.0, -1.0, 1.0, -1.0, -1.0, 1.0, 1.0, 1.0, -1.0] 9.997616423404991e-05 -17.0
+    # 10 [-1.0, 1.0, -1.0, -1.0, -1.0, 1.0, 1.0, 1.0, -1.0, 1.0] 9.999516160493437e-05 -17.0
