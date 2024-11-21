@@ -10,11 +10,55 @@ const int MAX_ITER = 2500000;
 const double ENERGY_THRESH = 0.1;
 const double K_B = 1.0;
 
+/*HLS Simulator*/
+std::vector<int> hlsStream() {
+
+    std::vector<std::vector<double>> matrix = {
+        {0., 1., 1., 0., 0., 1.},
+        {1., 0., 0., 1., 1., 0.},
+        {1., 0., 0., 0., 0., 0.},
+        {0., 1., 0., 0., 1., 1.},
+        {0., 1., 0., 1., 0., 0.},
+        {1., 0., 0., 1., 0., 0.}
+    };
+
+	std::vector<int> matrixStream(0);
+    for (const auto& row : matrix) {
+        matrixStream.insert(matrixStream.end(), row.begin(), row.end());
+    }
+    return matrixStream;
+}
+
+int lrand(){
+    
+    // static ap_uint<32> reg = SEED; // Static register to hold the state
+
+    // // Feedback taps (example taps for a 32-bit LFSR)
+    // bool new_bit = (reg[31] ^ reg[21] ^ reg[1] ^ reg[0]); // XOR feedback
+
+    // // Shift right and insert the new bit
+    // reg = (reg >> 1) | (new_bit << 31);
+
+    // return reg; // Return the current state as a pseudo-random number
+    
+
+    // Seed for random number generation
+    static unsigned int lfsr = 0xACE1;
+
+    unsigned bit;
+    bit  = ((lfsr >> 0) ^ (lfsr >> 2) ^ (lfsr >> 3) ^ (lfsr >> 5) ) & 1;
+    lfsr =  (lfsr >> 1) | (bit << 15);
+    
+    return lfsr;
+}
+
+
+/*Simulated Annaeling*/
 std::vector<double> initialSolution(int nVertices) {
     std::vector<double> initVerticesState(nVertices);
     
     for (int i = 0; i < nVertices; ++i) {
-        initVerticesState[i] = (rand() % 2 == 0) ? -1.0 : 1.0; // Randomly choose -1 or 1
+        initVerticesState[i] = (lrand() % 2 == 0) ? -1.0 : 1.0; // Randomly choose -1 or 1
     }
     return initVerticesState;
 }
@@ -38,7 +82,7 @@ double energy(const std::vector<double>& verticesState, const std::vector<std::v
 }
 
 int vertexIndexSel(const std::vector<double>& state) {
-    return rand() % state.size(); // Randomly select an index
+    return lrand() % state.size(); // Randomly select an index
 }
 
 double localField(const std::vector<double>& state, int index, const std::vector<std::vector<double>>& edges) {
@@ -68,6 +112,7 @@ std::vector<double> simulatedAnnealing(const std::vector<std::vector<double>>& m
     double temperature = INITIAL_TEMP;
 
     for (int iterate = 0; iterate < MAX_ITER; ++iterate) {
+        
         // 1. Select a random vertex
         int vertexIndex = vertexIndexSel(currentSolution);
 
@@ -79,7 +124,7 @@ std::vector<double> simulatedAnnealing(const std::vector<std::vector<double>>& m
 
         // 5. Acceptance Criteria
         double prob = acceptanceProbability(deltaEnergy, temperature);
-        if (static_cast<double>(rand()) / RAND_MAX <= prob) {
+        if (static_cast<double>(lrand()) / RAND_MAX <= prob) {
             // 6. Update current solution
             currentSolution[vertexIndex] = -currentSolution[vertexIndex];
             currentEnergy += deltaEnergy;
@@ -100,24 +145,31 @@ std::vector<double> simulatedAnnealing(const std::vector<std::vector<double>>& m
     return currentSolution;
 }
 
-
-int main(int graph, int** weight) {
+/*Main*/
+int main() 
+{
     
-    srand(static_cast<unsigned int>(time(0))); // Seed for random number generation
+    // Seed for random number generation
+    //srand(static_cast<unsigned int>(time(0))); 
 
-    std::vector<std::vector<double>> matrix = {
-        {0., 1., 1., 1., 0., 1., 1., 0., 0., 1.},
-        {1., 0., 0., 1., 1., 0., 0., 1., 1., 0.},
-        {1., 0., 0., 0., 0., 0., 1., 1., 1., 0.},
-        {1., 1., 0., 0., 0., 0., 0., 1., 0., 1.},
-        {0., 1., 0., 0., 0., 0., 1., 1., 0., 0.},
-        {1., 0., 0., 0., 0., 0., 0., 0., 1., 0.},
-        {1., 0., 1., 0., 1., 0., 0., 0., 1., 1.},
-        {0., 1., 1., 1., 1., 0., 0., 0., 1., 1.},
-        {0., 1., 1., 0., 0., 1., 1., 1., 0., 1.},
-        {1., 0., 0., 1., 0., 0., 1., 1., 1., 0.}
-    };
+    // HLS Stream
+    std::vector<int> stream = hlsStream();
+    std::vector<double> TDmatrix;
+    for (const auto& val : stream) {
+        TDmatrix.push_back(static_cast<double>(val));
+    }
+    // Recreate the matrix from TDmatrix
+    std::vector<std::vector<double>> matrix;
+    int n = std::sqrt(TDmatrix.size()); // replace with 6
+    for (int i = 0; i < n; ++i) {
+        std::vector<double> row;
+        for (int j = 0; j < n; ++j) {
+            row.push_back(TDmatrix[i * n + j]);
+        }
+        matrix.push_back(row);
+    }
 
+    // Main part of the code
     std::vector<double> best_solution = simulatedAnnealing(matrix);
 
     std::cout << "Best State: ";
