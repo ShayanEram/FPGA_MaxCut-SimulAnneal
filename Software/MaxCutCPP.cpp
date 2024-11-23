@@ -14,7 +14,7 @@ int32_t lrand(){
     return reg;
 }
 
-std::vector<int8_t> simulatedAnnealing(const std::vector<int8_t> &input_stream)
+std::vector<int8_t> maxCut(const std::vector<int8_t> &input_stream)
 {
     
     // Defines & Constants
@@ -144,7 +144,7 @@ int main()
     }
 
     std::vector<int8_t> output_stream(6);
-    output_stream = simulatedAnnealing(input_stream);
+    output_stream = maxCut(input_stream);
 
     std::cout << "Best State: ";
     for (int8_t state : output_stream) {

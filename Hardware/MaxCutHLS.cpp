@@ -19,7 +19,7 @@ int32_a lrand(){
     return reg;
 }
 
-void simulatedAnnealing(hls::stream<axi_stream> &input_stream, hls::stream<axi_stream> &output_stream)
+void maxCut(hls::stream<axi_stream> &input_stream, hls::stream<axi_stream> &output_stream)
 {
     #pragma HLS INTERFACE axis port=input_stream
     #pragma HLS INTERFACE axis port=output_stream
@@ -135,7 +135,7 @@ void simulatedAnnealing(hls::stream<axi_stream> &input_stream, hls::stream<axi_s
     for(int8_a i = 0; i < 6; i++){
         fpga_output = static_cast<int8_a>(currentSolution[i]);
         output.data = fpga_output;
-        output_val.last = (i == 5) ? 1 : 0;
+        output.last = (i == 5) ? 1 : 0;
         output_stream.write(output);
     }
 }
