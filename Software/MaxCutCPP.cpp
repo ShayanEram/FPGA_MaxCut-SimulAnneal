@@ -23,48 +23,48 @@ std::vector<int8_t> simulatedAnnealing(const std::vector<int8_t> &input_stream)
     const int8_t BYTE = 8;
     const uint32_t RANDMAX = 0x7fff;
 
-    const double INITIAL_TEMP = 20.0;
-    const double FINAL_TEMP = 0.0001;
+    const float INITIAL_TEMP = 20.0;
+    const float FINAL_TEMP = 0.0001;
     const uint32_t MAX_ITER = 2500;
-    const double ENERGY_THRESH = 0.1;
-    const double K_B = 1.0;
+    const float ENERGY_THRESH = 0.1;
+    const float K_B = 1.0;
 
     // Initialize the matrix and data
-    double matrix[6][6] = {0}; // Initialize the matrix with zeros
+    float matrix[6][6] = {0}; // Initialize the matrix with zeros
     int8_t input = 0;
 
     // Read the next available data from the input stream
     for(int8_t i = 0; i < 6; i++){
         for(int8_t j = 0; j < 6; j++){
             input = input_stream[j + i * 6];
-            matrix[i][j] = static_cast<double>(input);
+            matrix[i][j] = static_cast<float>(input);
         }
     }
 
     // Initialize the current solution ...........................//
-    double currentSolution[6] = {0};
+    float currentSolution[6] = {0};
     for (int8_t i = 0; i < 6; ++i) {
         currentSolution[i] = (lrand() % 2 == 0) ? -1.0 : 1.0;
     }
 
     // Initialize the current energy ................................//
-    double edgesWeightSum = 0.0;
+    float edgesWeightSum = 0.0;
     for (int8_t i = 0; i < 6; ++i) {
         for (int8_t j = 0; j < 6; ++j) {
             edgesWeightSum += matrix[i][j];
         }
     }
-    double energyContribute = 0.0;
+    float energyContribute = 0.0;
     for (int8_t i = 0; i < 6; ++i) {
         for (int8_t j = 0; j < 6; ++j) {
             energyContribute += currentSolution[i] * matrix[i][j] * currentSolution[j];
         }
     }
-    double currentEnergy = 0.0;
+    float currentEnergy = 0.0;
     currentEnergy = -0.25 * (edgesWeightSum - energyContribute);
 
     // Initialize the temperature ...................................//
-    double temperature = INITIAL_TEMP;
+    float temperature = INITIAL_TEMP;
 
     ///////////////////////////////////////////////////////////////////////////
     for (int32_t iterate = 0; iterate < MAX_ITER; ++iterate) {
@@ -74,17 +74,17 @@ std::vector<int8_t> simulatedAnnealing(const std::vector<int8_t> &input_stream)
         vertexIndex = lrand() % 6;
 
         // 2. Calculate the local field .................................//
-        double localFieldVal = 0.0;
+        float localFieldVal = 0.0;
         for (int8_t j = 0; j < 6; ++j) {
         	localFieldVal += matrix[vertexIndex][j] * currentSolution[j];
         }
 
         // 3,4. Calculate Energy Difference with new energy ..............//
-        double deltaEnergy = 0.0;
+        float deltaEnergy = 0.0;
         deltaEnergy = -currentSolution[vertexIndex] * localFieldVal;
 
         // 5. Acceptance Criteria ......................................//
-        double prob = 0.0;
+        float prob = 0.0;
         if (deltaEnergy <= 0) {
             prob = 1.0;
         } else {
@@ -92,14 +92,14 @@ std::vector<int8_t> simulatedAnnealing(const std::vector<int8_t> &input_stream)
         }
 
         // 6. Update current solution ..................................//
-        if (static_cast<double>(lrand()) / RANDMAX <= prob) {
+        if (static_cast<float>(lrand()) / RANDMAX <= prob) {
             currentSolution[vertexIndex] = -currentSolution[vertexIndex];
             currentEnergy += deltaEnergy;
         }
 
         // 7. Update temperature .......................................//
-        double percentage = 0.0;
-        percentage = static_cast<double>(iterate + 1) / MAX_ITER;
+        float percentage = 0.0;
+        percentage = static_cast<float>(iterate + 1) / MAX_ITER;
         temperature = (static_cast<int32_t>(1000 * percentage) % 2 == 0) ? 0.99999 * temperature : temperature;
         if (temperature == 0) {
             break;
