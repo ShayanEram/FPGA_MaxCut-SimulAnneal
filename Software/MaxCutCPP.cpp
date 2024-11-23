@@ -5,9 +5,9 @@
 
 int32_t lrand(){
     
-    static uint32_t reg = 0xACE1;
+    static uint32_t reg = 0xACEF;
 
-    uint32_t new_bit = (reg >> 15) ^ (reg >> 13) ^ (reg >> 12) ^ (reg >> 12) ^ (reg >> 10);
+    uint32_t new_bit = (reg >> 15) ^ (reg >> 13) ^ (reg >> 12) ^ (reg >> 10);
 
     reg = (reg >> 1) | (new_bit << 15);
 
@@ -88,7 +88,7 @@ std::vector<int8_t> simulatedAnnealing(const std::vector<int8_t> &input_stream)
         if (deltaEnergy <= 0) {
             prob = 1.0;
         } else {
-            prob = std::exp(-deltaEnergy / temperature);
+            prob = std::expf(-deltaEnergy / temperature);
         }
 
         // 6. Update current solution ..................................//
