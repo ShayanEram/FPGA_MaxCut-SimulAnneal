@@ -1,0 +1,19 @@
+INFO: [HLS 200-10] Running 'C:/Logiciels/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/vivado_hls.exe'
+INFO: [HLS 200-10] For user 'shera' on host 'l4818-08' (Windows NT_amd64 version 6.2) on Sat Nov 23 16:53:58 -0500 2024
+INFO: [HLS 200-10] In directory 'C:/Users/shera/Documents/MaxCut-Inf8503/Hardware'
+INFO: [HLS 200-10] Opening project 'C:/Users/shera/Documents/MaxCut-Inf8503/Hardware/MAXCUT_HLS'.
+INFO: [HLS 200-10] Opening solution 'C:/Users/shera/Documents/MaxCut-Inf8503/Hardware/MAXCUT_HLS/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg400-1'
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+
+****** Vivado v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Logiciels/Xilinx/Vivado/2018.3/data/ip'.
+INFO: [Common 17-206] Exiting Vivado at Sat Nov 23 16:54:08 2024...

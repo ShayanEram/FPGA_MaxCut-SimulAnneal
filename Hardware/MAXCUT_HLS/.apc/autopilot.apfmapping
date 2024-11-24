@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="MaxCutHLS.cpp" path="C:\Users\shera\Documents\MaxCut-Inf8503\Hardware\MaxCutHLS.cpp"/>
+  </source>
+  <testbench>
+    <originFiles name="MaxCutHLS_Test.cpp" path="C:\Users\shera\Documents\MaxCut-Inf8503\Hardware\MaxCutHLS_Test.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>
