@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
-| Date         : Sat Nov 23 16:58:26 2024
-| Host         : L4818-08 running 64-bit major release  (build 9200)
+| Date         : Tue Dec  3 21:14:23 2024
+| Host         : L4818-01 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file design_1_wrapper_utilization_synth.rpt -pb design_1_wrapper_utilization_synth.pb
 | Design       : design_1_wrapper
 | Device       : xc7z020clg400-1
@@ -31,13 +31,13 @@ Table of Contents
 +----------------------------+------+-------+------------+-----------+-------+
 |          Site Type         | Used | Fixed | Prohibited | Available | Util% |
 +----------------------------+------+-------+------------+-----------+-------+
-| Slice LUTs*                | 4741 |     0 |          0 |     53200 |  8.91 |
-|   LUT as Logic             | 4390 |     0 |          0 |     53200 |  8.25 |
-|   LUT as Memory            |  351 |     0 |          0 |     17400 |  2.02 |
-|     LUT as Distributed RAM |   94 |     0 |            |           |       |
+| Slice LUTs*                | 4269 |     0 |          0 |     53200 |  8.02 |
+|   LUT as Logic             | 3926 |     0 |          0 |     53200 |  7.38 |
+|   LUT as Memory            |  343 |     0 |          0 |     17400 |  1.97 |
+|     LUT as Distributed RAM |   86 |     0 |            |           |       |
 |     LUT as Shift Register  |  257 |     0 |            |           |       |
-| Slice Registers            | 4471 |     0 |          0 |    106400 |  4.20 |
-|   Register as Flip Flop    | 4471 |     0 |          0 |    106400 |  4.20 |
+| Slice Registers            | 4520 |     0 |          0 |    106400 |  4.25 |
+|   Register as Flip Flop    | 4520 |     0 |          0 |    106400 |  4.25 |
 |   Register as Latch        |    0 |     0 |          0 |    106400 |  0.00 |
 | F7 Muxes                   |    0 |     0 |          0 |     26600 |  0.00 |
 | F8 Muxes                   |    0 |     0 |          0 |     13300 |  0.00 |
@@ -59,8 +59,8 @@ Table of Contents
 | 0     |          Yes |           - |            - |
 | 33    |          Yes |           - |          Set |
 | 69    |          Yes |           - |        Reset |
-| 124   |          Yes |         Set |            - |
-| 4245  |          Yes |       Reset |            - |
+| 120   |          Yes |         Set |            - |
+| 4298  |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -84,8 +84,8 @@ Table of Contents
 +----------------+------+-------+------------+-----------+-------+
 |    Site Type   | Used | Fixed | Prohibited | Available | Util% |
 +----------------+------+-------+------------+-----------+-------+
-| DSPs           |   26 |     0 |          0 |       220 | 11.82 |
-|   DSP48E1 only |   26 |       |            |           |       |
+| DSPs           |   33 |     0 |          0 |       220 | 15.00 |
+|   DSP48E1 only |   33 |       |            |           |       |
 +----------------+------+-------+------------+-----------+-------+
 
 
@@ -151,22 +151,22 @@ Table of Contents
 +----------+------+----------------------+
 | Ref Name | Used |  Functional Category |
 +----------+------+----------------------+
-| FDRE     | 4245 |         Flop & Latch |
-| LUT3     | 1262 |                  LUT |
-| LUT2     | 1120 |                  LUT |
-| LUT4     |  895 |                  LUT |
-| LUT6     |  761 |                  LUT |
-| LUT5     |  661 |                  LUT |
-| LUT1     |  622 |                  LUT |
-| CARRY4   |  483 |           CarryLogic |
+| FDRE     | 4298 |         Flop & Latch |
+| LUT3     | 1069 |                  LUT |
+| LUT2     | 1068 |                  LUT |
+| LUT6     |  717 |                  LUT |
+| LUT4     |  711 |                  LUT |
+| LUT5     |  568 |                  LUT |
+| LUT1     |  557 |                  LUT |
+| CARRY4   |  406 |           CarryLogic |
 | SRL16E   |  167 |   Distributed Memory |
 | BIBUF    |  130 |                   IO |
-| FDSE     |  124 |         Flop & Latch |
+| FDSE     |  120 |         Flop & Latch |
 | SRLC32E  |   90 |   Distributed Memory |
-| RAMS32   |   86 |   Distributed Memory |
+| RAMS32   |   78 |   Distributed Memory |
 | FDCE     |   69 |         Flop & Latch |
 | FDPE     |   33 |         Flop & Latch |
-| DSP48E1  |   26 |     Block Arithmetic |
+| DSP48E1  |   33 |     Block Arithmetic |
 | RAMD32   |   24 |   Distributed Memory |
 | RAMB36E1 |    2 |         Block Memory |
 | PS7      |    1 | Specialized Resource |

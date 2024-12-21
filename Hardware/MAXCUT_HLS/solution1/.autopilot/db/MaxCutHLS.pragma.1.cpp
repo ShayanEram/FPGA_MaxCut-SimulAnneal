@@ -6799,44 +6799,33 @@ class stream
 # 1 "C:/Logiciels/Xilinx/Vivado/2018.3/common/technology/autopilot/ap_int.h" 1
 # 4 "MaxCutHLS.cpp" 2
 
-
-const int SCALE_FACTOR = 10000;
-
 typedef ap_axis<8, 2, 5, 6> axi_stream;
 typedef ap_int<8> int8_a;
 typedef ap_int<32> int32_a;
 typedef ap_uint<32> uint32_a;
 
 int32_a lrand() {
-    static uint32_a reg = 0xACEF;
-    uint32_a new_bit = (reg >> 15) ^ (reg >> 13) ^ (reg >> 12) ^ (reg >> 10);
-    reg = (reg >> 1) | (new_bit << 15);
-    return reg;
+    static uint32_a lfsr = 0xAFAFu;
+    uint32_a bit;
+    bit = ((lfsr >> 0) ^ (lfsr >> 2) ^ (lfsr >> 3) ^ (lfsr >> 5)) & 1;
+    return lfsr = (lfsr >> 1) | (bit << 15);
 }
 
-int linear_approx_exp(int x) {
-
-    if (x > SCALE_FACTOR) {
-        return 0;
-    } else if (x < -SCALE_FACTOR) {
-        return SCALE_FACTOR;
-    } else {
-
-        return SCALE_FACTOR - (x / 10);
-    }
+int exp_approx(int x) {
+    return 1000 + x + (x * x) / 2000;
 }
 
-void maxCut(hls::stream<axi_stream> &input_stream, hls::stream<axi_stream> &output_stream) {
+void maxCut(hls::stream<axi_stream> &input_stream, hls::stream<axi_stream> &output_stream)
+{
 _ssdm_op_SpecInterface(&input_stream, "axis", 1, 1, "both", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
 _ssdm_op_SpecInterface(&output_stream, "axis", 1, 1, "both", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
 _ssdm_op_SpecInterface(0, "s_axilite", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
 
  const uint32_a RANDMAX = 0x7fff;
-
-    const int INITIAL_TEMP = 200000;
-    const int FINAL_TEMP = 1;
-    const uint32_a MAX_ITER = 2500;
-    const int ENERGY_THRESH = 1000;
+    const int INITIAL_TEMP = 20000;
+    const int FINAL_TEMP = 10;
+    const uint32_a MAX_ITER = 250000;
+    const int ENERGY_THRESH = 100;
 
     int matrix[6][6] = {0};
     axi_stream input;
@@ -6845,13 +6834,13 @@ _ssdm_op_SpecInterface(0, "s_axilite", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "
     for (int8_a i = 0; i < 6; i++) {
         for (int8_a j = 0; j < 6; j++) {
             input = input_stream.read();
-            matrix[i][j] = input.data * SCALE_FACTOR;
+            matrix[i][j] = static_cast<int>(input.data) * 1000;
         }
     }
 
     int currentSolution[6] = {0};
     for (int8_a i = 0; i < 6; ++i) {
-        currentSolution[i] = (lrand() % 2 == 0) ? -SCALE_FACTOR : SCALE_FACTOR;
+        currentSolution[i] = (lrand() % 2 == 0) ? -1000 : 1000;
     }
 
     int edgesWeightSum = 0;
@@ -6864,33 +6853,33 @@ _ssdm_op_SpecInterface(0, "s_axilite", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "
     int energyContribute = 0;
     for (int8_a i = 0; i < 6; ++i) {
         for (int8_a j = 0; j < 6; ++j) {
-            energyContribute += (currentSolution[i] * matrix[i][j] * currentSolution[j]) / SCALE_FACTOR;
+            energyContribute += currentSolution[i] * matrix[i][j] * currentSolution[j] / 1000;
         }
     }
 
-    int currentEnergy = -((edgesWeightSum - energyContribute) / 4);
+    int currentEnergy = -25 * (edgesWeightSum - energyContribute) / 1000;
 
     int temperature = INITIAL_TEMP;
 
-    for (int32_a iterate = 0; iterate < 2500; ++iterate) {
+    for (int32_a iterate = 0; iterate < 250000; ++iterate) {
         int32_a vertexIndex = lrand() % 6;
 
         int localFieldVal = 0;
         for (int8_a j = 0; j < 6; ++j) {
-            localFieldVal += (matrix[vertexIndex][j] * currentSolution[j]) / SCALE_FACTOR;
+            localFieldVal += matrix[vertexIndex][j] * currentSolution[j] / 1000;
         }
 
-        int deltaEnergy = -((currentSolution[vertexIndex] * localFieldVal) / SCALE_FACTOR);
+        int deltaEnergy = -currentSolution[vertexIndex] * localFieldVal / 1000;
 
-        int prob = (deltaEnergy <= 0) ? SCALE_FACTOR : linear_approx_exp(deltaEnergy / temperature);
+        int prob = (deltaEnergy <= 0) ? 1000 : exp_approx(-deltaEnergy * 1000 / temperature);
 
-        if (lrand() % RANDMAX <= prob) {
+        if (static_cast<int>(1000 * lrand() / RANDMAX) <= prob) {
             currentSolution[vertexIndex] = -currentSolution[vertexIndex];
             currentEnergy += deltaEnergy;
         }
 
-        int percentage = static_cast<int>((iterate + 1) * SCALE_FACTOR / MAX_ITER);
-        temperature = (1000 * percentage / SCALE_FACTOR % 2 == 0) ? (temperature * 99999 / 100000) : temperature;
+        int percentage = 1000 * (iterate + 1) / MAX_ITER;
+        temperature = (percentage % 2 == 0) ? 99999 * temperature / 100000 : temperature;
 
         if (temperature == 0) {
             break;
@@ -6911,7 +6900,7 @@ _ssdm_op_SpecInterface(0, "s_axilite", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "
     output.last = 0;
 
     for (int8_a i = 0; i < 6; i++) {
-        fpga_output = static_cast<int8_a>(currentSolution[i] / SCALE_FACTOR);
+        fpga_output = static_cast<int8_a>(currentSolution[i] / 1000);
         output.data = fpga_output;
         output.last = (i == 5) ? 1 : 0;
         output_stream.write(output);

@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'maxCut'" level="0">
-<item name = "Date">Sat Nov 23 16:53:41 2024
+<item name = "Date">Tue Dec  3 21:07:23 2024
 </item>
 <item name = "Version">2018.3 (Build 2405991 on Thu Dec 06 23:56:15 MST 2018)</item>
 <item name = "Project">MAXCUT_HLS</item>
@@ -15,7 +15,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="4">Clock, Target, Estimated, Uncertainty</keys>
-<column name="ap_clk">10.00, 8.702, 1.25</column>
+<column name="ap_clk">10.00, 8.510, 1.25</column>
 </table>
 </item>
 </section>
@@ -24,7 +24,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="6">, min, max, min, max, Type</keys>
-<column name="">281, 345280, 281, 345280, none</column>
+<column name="">249, 38250289, 249, 38250289, none</column>
 </table>
 </item>
 <item name = "Detail">
@@ -41,8 +41,8 @@
 <column name=" + Loop 2.1">12, 12, 2, -, -, 6, no</column>
 <column name="- memset_currentSolution">5, 5, 1, -, -, 6, no</column>
 <column name="- Loop 4">6, 6, 1, -, -, 6, no</column>
-<column name="- Loop 5">109, 345107, 109 ~ 138, -, -, 1 ~ 2500, no</column>
-<column name=" + Loop 5.1">30, 30, 5, -, -, 6, no</column>
+<column name="- Loop 5">77, 38250116, 77 ~ 153, -, -, 1 ~ 250000, no</column>
+<column name=" + Loop 5.1">36, 36, 6, -, -, 6, no</column>
 <column name="- Loop 6">30, 30, 5, -, -, 6, no</column>
 </table>
 </item>

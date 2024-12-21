@@ -5,7 +5,7 @@
 
 uint32_t lrand()
 {
-    static uint32_t lfsr = 0xACE1u;
+    static uint32_t lfsr = 0xAFAFu;
     uint32_t bit;
     bit = ((lfsr >> 0) ^ (lfsr >> 2) ^ (lfsr >> 3) ^ (lfsr >> 5)) & 1;
     return lfsr = (lfsr >> 1) | (bit << 15);

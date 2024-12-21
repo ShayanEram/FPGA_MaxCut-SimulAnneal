@@ -165,6 +165,8 @@
                             							
                             <option id="gnu.cpp.compiler.option.include.paths.1662958211" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
                                 								
+                                <listOptionValue builtIn="false" value="C:/Users/shera/Documents/Inf8085/Hardware"/>
+                                								
                                 <listOptionValue builtIn="false" value="C:/Logiciels/Xilinx/Vivado/2018.3/include/ap_sysc"/>
                                 								
                                 <listOptionValue builtIn="false" value="C:/Logiciels/Xilinx/Vivado/2018.3/include/etc"/>
@@ -172,8 +174,6 @@
                                 <listOptionValue builtIn="false" value="C:/Logiciels/Xilinx/Vivado/2018.3/win64/tools/auto_cc/include"/>
                                 								
                                 <listOptionValue builtIn="false" value="C:/Logiciels/Xilinx/Vivado/2018.3/win64/tools/systemc/include"/>
-                                								
-                                <listOptionValue builtIn="false" value="C:/Users/shera/Documents/MaxCut-Inf8503/Hardware"/>
                                 								
                                 <listOptionValue builtIn="false" value="C:/Logiciels/Xilinx/Vivado/2018.3/include"/>
                                 							
@@ -373,6 +373,8 @@
                             							
                             <option id="gnu.cpp.compiler.option.include.paths.891671666" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
                                 								
+                                <listOptionValue builtIn="false" value="C:/Users/shera/Documents/Inf8085/Hardware"/>
+                                								
                                 <listOptionValue builtIn="false" value="C:/Logiciels/Xilinx/Vivado/2018.3/include/ap_sysc"/>
                                 								
                                 <listOptionValue builtIn="false" value="C:/Logiciels/Xilinx/Vivado/2018.3/include/etc"/>
@@ -380,8 +382,6 @@
                                 <listOptionValue builtIn="false" value="C:/Logiciels/Xilinx/Vivado/2018.3/win64/tools/auto_cc/include"/>
                                 								
                                 <listOptionValue builtIn="false" value="C:/Logiciels/Xilinx/Vivado/2018.3/win64/tools/systemc/include"/>
-                                								
-                                <listOptionValue builtIn="false" value="C:/Users/shera/Documents/MaxCut-Inf8503/Hardware"/>
                                 								
                                 <listOptionValue builtIn="false" value="C:/Logiciels/Xilinx/Vivado/2018.3/include"/>
                                 							

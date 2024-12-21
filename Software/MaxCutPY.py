@@ -90,16 +90,14 @@ if __name__ == "__main__":
     
 
     matrix = [
-        [0., 1., 1., 0., 0., 1.],
-        [1., 0., 0., 1., 1., 0.],
-        [1., 0., 1., 0., 0., 0.],
-        [0., 1., 0., 0., 1., 1.],
-        [0., 1., 0., 1., 0., 0.],
-        [1., 0., 0., 1., 0., 0.]]
-
-    buffer = [item for row in matrix for item in row]
-    print("Edges Weight:", buffer)
+            [0., 1., 1., 0., 0., 1.],
+            [1., 0., 0., 1., 1., 0.],
+            [1., 0., 0., 0., 0., 0.],
+            [0., 1., 0., 0., 1., 1.],
+            [0., 1., 0., 1., 0., 0.],
+            [1., 0., 0., 1., 0., 0.]]
 
     best_solution = simulatedAnnealing(matrix)
-
+    print()
     print("Best State:", best_solution)
+    print()

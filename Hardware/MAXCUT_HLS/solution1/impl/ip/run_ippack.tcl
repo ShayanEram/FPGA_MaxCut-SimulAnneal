@@ -1,5 +1,5 @@
 # ==============================================================
-# File generated on Sat Nov 23 16:54:00 -0500 2024
+# File generated on Tue Dec 03 21:07:48 -0500 2024
 # Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
@@ -73,11 +73,10 @@ set sdx_kernel_files {}
 set enable_xo_gen 0
 set sdaccel_dir [file join [pwd] .. sdaccel]
 set xo_hls_files_dir ""
-set hdl_module_list {maxCut_srem_32ns_cud
-maxCut_sdiv_21ns_dEe
-maxCut_urem_32ns_eOg
+set hdl_module_list {maxCut_urem_29ns_cud
+maxCut_urem_32ns_dEe
+maxCut_sdiv_32ns_eOg
 maxCut_mul_mul_8sfYi
-maxCut_mul_mul_14g8j
 maxCut_matrix
 maxCut_currentSolbkb
 maxCut_AXILiteS_s_axi
@@ -1820,7 +1819,7 @@ if {![regexp -nocase {2014\.3.*} $vivado_ver match]} {
 ipx::create_xgui_files -logo_file misc/logo.png $core
 
 ## System Info
-set user_parameters_list {clk_period 10 machine 64 combinational 0 latency 281 II x}
+set user_parameters_list {clk_period 10 machine 64 combinational 0 latency 249 II x}
 foreach {user_para value} $user_parameters_list {
     incr user_parameter_order
     set user_para_value [ipx::add_user_parameter $user_para $core]

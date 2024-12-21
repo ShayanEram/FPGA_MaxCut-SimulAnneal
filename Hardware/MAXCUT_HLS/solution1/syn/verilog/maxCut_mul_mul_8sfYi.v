@@ -3,8 +3,8 @@
 
   module maxCut_mul_mul_8sfYi_DSP48_0(a, b, p);
 input signed [8 - 1 : 0] a;
-input [15 - 1 : 0] b;
-output signed [23 - 1 : 0] p;
+input [11 - 1 : 0] b;
+output signed [19 - 1 : 0] p;
 
 assign p = $signed (a) * $signed ({1'b0, b});
 

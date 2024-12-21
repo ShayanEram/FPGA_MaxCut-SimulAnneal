@@ -1,5 +1,5 @@
 // ==============================================================
-// File generated on Sat Nov 23 16:53:44 -0500 2024
+// File generated on Tue Dec 03 21:07:26 -0500 2024
 // Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
 // SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 // IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
@@ -8,7 +8,7 @@
 `timescale 1 ns / 1 ps
 module maxCut_matrix_ram (addr0, ce0, d0, we0, q0,  clk);
 
-parameter DWIDTH = 24;
+parameter DWIDTH = 20;
 parameter AWIDTH = 6;
 parameter MEM_SIZE = 36;
 
@@ -49,7 +49,7 @@ module maxCut_matrix(
     d0,
     q0);
 
-parameter DataWidth = 32'd24;
+parameter DataWidth = 32'd20;
 parameter AddressRange = 32'd36;
 parameter AddressWidth = 32'd6;
 input reset;

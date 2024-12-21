@@ -125,13 +125,13 @@ set NewPortList {[
  	{ "name": "output_stream_TDEST", "direction": "out", "datatype": "sc_lv", "bitwidth":6, "type": "signal", "bundle":{"name": "output_stream_V_dest_V", "role": "default" }}  ]}
 
 set RtlHierarchyInfo {[
-	{"ID" : "0", "Level" : "0", "Path" : "`AUTOTB_DUT_INST", "Parent" : "", "Child" : ["1", "2", "3", "4", "5", "6", "7", "8"],
+	{"ID" : "0", "Level" : "0", "Path" : "`AUTOTB_DUT_INST", "Parent" : "", "Child" : ["1", "2", "3", "4", "5", "6", "7"],
 		"CDFG" : "maxCut",
 		"Protocol" : "ap_ctrl_hs",
 		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "0", "ap_idle" : "1",
 		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
 		"II" : "0",
-		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "281", "EstimateLatencyMax" : "345280",
+		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "249", "EstimateLatencyMax" : "38250289",
 		"Combinational" : "0",
 		"Datapath" : "0",
 		"ClockEnable" : "0",
@@ -157,15 +157,14 @@ set RtlHierarchyInfo {[
 			{"Name" : "output_stream_V_last_V", "Type" : "Axis", "Direction" : "O"},
 			{"Name" : "output_stream_V_id_V", "Type" : "Axis", "Direction" : "O"},
 			{"Name" : "output_stream_V_dest_V", "Type" : "Axis", "Direction" : "O"},
-			{"Name" : "reg_V", "Type" : "OVld", "Direction" : "IO"}]},
+			{"Name" : "lfsr_V", "Type" : "OVld", "Direction" : "IO"}]},
 	{"ID" : "1", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.maxCut_AXILiteS_s_axi_U", "Parent" : "0"},
 	{"ID" : "2", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.matrix_U", "Parent" : "0"},
 	{"ID" : "3", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.currentSolution_U", "Parent" : "0"},
-	{"ID" : "4", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.maxCut_srem_32ns_cud_U1", "Parent" : "0"},
-	{"ID" : "5", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.maxCut_sdiv_21ns_dEe_U2", "Parent" : "0"},
-	{"ID" : "6", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.maxCut_urem_32ns_eOg_U3", "Parent" : "0"},
-	{"ID" : "7", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.maxCut_mul_mul_8sfYi_U4", "Parent" : "0"},
-	{"ID" : "8", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.maxCut_mul_mul_14g8j_U5", "Parent" : "0"}]}
+	{"ID" : "4", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.maxCut_urem_29ns_cud_U1", "Parent" : "0"},
+	{"ID" : "5", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.maxCut_urem_32ns_dEe_U2", "Parent" : "0"},
+	{"ID" : "6", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.maxCut_sdiv_32ns_eOg_U3", "Parent" : "0"},
+	{"ID" : "7", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.maxCut_mul_mul_8sfYi_U4", "Parent" : "0"}]}
 
 
 set ArgLastReadFirstWriteLatency {
@@ -177,20 +176,20 @@ set ArgLastReadFirstWriteLatency {
 		input_stream_V_last_V {Type I LastRead 4 FirstWrite -1}
 		input_stream_V_id_V {Type I LastRead 4 FirstWrite -1}
 		input_stream_V_dest_V {Type I LastRead 4 FirstWrite -1}
-		output_stream_V_data_V {Type O LastRead -1 FirstWrite 117}
-		output_stream_V_keep_V {Type O LastRead -1 FirstWrite 117}
-		output_stream_V_strb_V {Type O LastRead -1 FirstWrite 117}
-		output_stream_V_user_V {Type O LastRead -1 FirstWrite 117}
-		output_stream_V_last_V {Type O LastRead -1 FirstWrite 117}
-		output_stream_V_id_V {Type O LastRead -1 FirstWrite 117}
-		output_stream_V_dest_V {Type O LastRead -1 FirstWrite 117}
-		reg_V {Type IO LastRead -1 FirstWrite -1}}}
+		output_stream_V_data_V {Type O LastRead -1 FirstWrite 126}
+		output_stream_V_keep_V {Type O LastRead -1 FirstWrite 126}
+		output_stream_V_strb_V {Type O LastRead -1 FirstWrite 126}
+		output_stream_V_user_V {Type O LastRead -1 FirstWrite 126}
+		output_stream_V_last_V {Type O LastRead -1 FirstWrite 126}
+		output_stream_V_id_V {Type O LastRead -1 FirstWrite 126}
+		output_stream_V_dest_V {Type O LastRead -1 FirstWrite 126}
+		lfsr_V {Type IO LastRead -1 FirstWrite -1}}}
 
 set hasDtUnsupportedChannel 0
 
 set PerformanceInfo {[
-	{"Name" : "Latency", "Min" : "281", "Max" : "345280"}
-	, {"Name" : "Interval", "Min" : "282", "Max" : "345281"}
+	{"Name" : "Latency", "Min" : "249", "Max" : "38250289"}
+	, {"Name" : "Interval", "Min" : "250", "Max" : "38250290"}
 ]}
 
 set PipelineEnableSignalInfo {[

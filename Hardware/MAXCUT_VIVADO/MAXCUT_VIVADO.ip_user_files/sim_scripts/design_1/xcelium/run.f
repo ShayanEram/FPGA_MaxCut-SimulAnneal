@@ -17,18 +17,6 @@
 -makelib xcelium_lib/xpm \
   "C:/Logiciels/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_VCOMP.vhd" \
 -endlib
--makelib xcelium_lib/axi_infrastructure_v1_1_0 \
-  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/ec67/hdl/axi_infrastructure_v1_1_vl_rfs.v" \
--endlib
--makelib xcelium_lib/axi_vip_v1_1_12 -sv \
-  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/1033/hdl/axi_vip_v1_1_vl_rfs.sv" \
--endlib
--makelib xcelium_lib/processing_system7_vip_v1_0_14 -sv \
-  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/5765/hdl/processing_system7_vip_v1_0_vl_rfs.sv" \
--endlib
--makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/design_1/ip/design_1_processing_system7_0_0/sim/design_1_processing_system7_0_0.v" \
--endlib
 -makelib xcelium_lib/lib_pkg_v1_0_2 \
   "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/0513/hdl/lib_pkg_v1_0_rfs.vhd" \
 -endlib
@@ -65,6 +53,9 @@
 -makelib xcelium_lib/generic_baseblocks_v2_1_0 \
   "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/b752/hdl/generic_baseblocks_v2_1_vl_rfs.v" \
 -endlib
+-makelib xcelium_lib/axi_infrastructure_v1_1_0 \
+  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/ec67/hdl/axi_infrastructure_v1_1_vl_rfs.v" \
+-endlib
 -makelib xcelium_lib/axi_register_slice_v2_1_26 \
   "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/0a3f/hdl/axi_register_slice_v2_1_vl_rfs.v" \
 -endlib
@@ -76,24 +67,30 @@
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/design_1/ip/design_1_xbar_0/sim/design_1_xbar_0.v" \
+  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/408d/hdl/verilog/maxCut_AXILiteS_s_axi.v" \
+  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/408d/hdl/verilog/maxCut_currentSolbkb.v" \
+  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/408d/hdl/verilog/maxCut_matrix.v" \
+  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/408d/hdl/verilog/maxCut_mul_mul_8sfYi.v" \
+  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/408d/hdl/verilog/maxCut_sdiv_32ns_eOg.v" \
+  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/408d/hdl/verilog/maxCut_urem_29ns_cud.v" \
+  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/408d/hdl/verilog/maxCut_urem_32ns_dEe.v" \
+  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/408d/hdl/verilog/maxCut.v" \
+  "../../../bd/design_1/ip/design_1_maxCut_0_0/sim/design_1_maxCut_0_0.v" \
+-endlib
+-makelib xcelium_lib/axi_vip_v1_1_12 -sv \
+  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/1033/hdl/axi_vip_v1_1_vl_rfs.sv" \
+-endlib
+-makelib xcelium_lib/processing_system7_vip_v1_0_14 -sv \
+  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/5765/hdl/processing_system7_vip_v1_0_vl_rfs.sv" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/design_1/ip/design_1_processing_system7_0_0/sim/design_1_processing_system7_0_0.v" \
 -endlib
 -makelib xcelium_lib/proc_sys_reset_v5_0_13 \
   "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/design_1/ip/design_1_rst_ps7_0_100M_0/sim/design_1_rst_ps7_0_100M_0.vhd" \
--endlib
--makelib xcelium_lib/xil_defaultlib \
-  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/0216/hdl/verilog/maxCut_AXILiteS_s_axi.v" \
-  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/0216/hdl/verilog/maxCut_currentSolbkb.v" \
-  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/0216/hdl/verilog/maxCut_matrix.v" \
-  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/0216/hdl/verilog/maxCut_mul_mul_8sfYi.v" \
-  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/0216/hdl/verilog/maxCut_mul_mul_14g8j.v" \
-  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/0216/hdl/verilog/maxCut_sdiv_21ns_dEe.v" \
-  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/0216/hdl/verilog/maxCut_srem_32ns_cud.v" \
-  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/0216/hdl/verilog/maxCut_urem_32ns_eOg.v" \
-  "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/0216/hdl/verilog/maxCut.v" \
-  "../../../bd/design_1/ip/design_1_maxCut_0_0/sim/design_1_maxCut_0_0.v" \
 -endlib
 -makelib xcelium_lib/axi_protocol_converter_v2_1_26 \
   "../../../../MAXCUT_VIVADO.gen/sources_1/bd/design_1/ipshared/90c8/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \

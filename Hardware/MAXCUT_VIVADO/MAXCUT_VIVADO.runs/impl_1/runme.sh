@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/shera/Documents/MaxCut-Inf8503/Hardware/MAXCUT_VIVADO/MAXCUT_VIVADO.runs/impl_1'
+HD_PWD='C:/Users/shera/Documents/Inf8085/Hardware/MAXCUT_VIVADO/MAXCUT_VIVADO.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

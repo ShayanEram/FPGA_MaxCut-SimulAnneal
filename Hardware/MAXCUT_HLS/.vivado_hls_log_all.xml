@@ -12,7 +12,7 @@
   <warningLogs>
     <logs>
       <synLog>
-        <logs message="WARNING: [RTGEN 206-101] Register 'reg_V' is power-on initialization." projectName="MAXCUT_HLS" solutionName="solution1" date="2024-11-23T16:53:41.732-0500" type="Warning"/>
+        <logs message="WARNING: [RTGEN 206-101] Register 'lfsr_V' is power-on initialization." projectName="MAXCUT_HLS" solutionName="solution1" date="2024-12-03T21:07:23.742-0500" type="Warning"/>
       </synLog>
       <simLog/>
       <mgLog/>

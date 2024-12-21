@@ -1937,3 +1937,302 @@ Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
 INFO: [HLS 200-10] Setting target device to 'xc7z020clg400-1'
 INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+==============================================================
+File generated on Thu Nov 28 19:50:37 -0500 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg400-1'
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'MaxCutHLS.cpp' ... 
+ERROR: [HLS 200-70] Compilation errors found: In file included from MaxCutHLS.cpp:1:
+MaxCutHLS.cpp:11:12: error: unknown type name 'uint32_t'; did you mean 'uint32_a'?
+    static uint32_t lfsr = 0xACE1u;
+           ^~~~~~~~
+           uint32_a
+MaxCutHLS.cpp:8:21: note: 'uint32_a' declared here
+typedef ap_uint<32> uint32_a;
+                    ^
+MaxCutHLS.cpp:12:5: error: unknown type name 'uint32_t'; did you mean 'uint32_a'?
+    uint32_t bit;
+    ^~~~~~~~
+    uint32_a
+MaxCutHLS.cpp:8:21: note: 'uint32_a' declared here
+typedef ap_uint<32> uint32_a;
+                    ^
+MaxCutHLS.cpp:106:35: error: unknown type name 'int8_t'; did you mean 'int8_a'?
+        fpga_output = static_cast<int8_t>(currentSolution[i] / 1000);
+                                  ^~~~~~
+                                  int8_a
+MaxCutHLS.cpp:6:19: note: 'int8_a' declared here
+typedef ap_int<8> int8_a;
+                  ^
+3 errors generated.
+==============================================================
+File generated on Thu Nov 28 19:52:52 -0500 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg400-1'
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'MaxCutHLS.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:15 . Memory (MB): peak = 102.797 ; gain = 20.711
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:15 . Memory (MB): peak = 102.797 ; gain = 20.711
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:01 ; elapsed = 00:00:16 . Memory (MB): peak = 112.215 ; gain = 30.129
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'lrand' into 'maxCut' (MaxCutHLS.cpp:46) automatically.
+INFO: [XFORM 203-602] Inlining function 'exp_approx' into 'maxCut' (MaxCutHLS.cpp:77) automatically.
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:01 ; elapsed = 00:00:16 . Memory (MB): peak = 116.137 ; gain = 34.051
+INFO: [XFORM 203-602] Inlining function 'lrand' into 'maxCut' (MaxCutHLS.cpp:46) automatically.
+INFO: [XFORM 203-602] Inlining function 'exp_approx' into 'maxCut' (MaxCutHLS.cpp:77) automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (MaxCutHLS.cpp:50:24) to (MaxCutHLS.cpp:67:31) in function 'maxCut'... converting 3 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'maxCut' (MaxCutHLS.cpp:21)...9 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:16 . Memory (MB): peak = 142.770 ; gain = 60.684
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:17 . Memory (MB): peak = 143.754 ; gain = 61.668
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'maxCut' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'maxCut' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 16.773 seconds; current allocated memory: 96.115 MB.
+INFO: [HLS 200-434] Only 0 loops out of a total 9 loops have been pipelined in this design.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.287 seconds; current allocated memory: 97.455 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'maxCut' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/input_stream_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/input_stream_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/input_stream_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/input_stream_V_user_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/input_stream_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/input_stream_V_id_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/input_stream_V_dest_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/output_stream_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/output_stream_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/output_stream_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/output_stream_V_user_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/output_stream_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/output_stream_V_id_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/output_stream_V_dest_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on function 'maxCut' to 's_axilite & ap_ctrl_hs'.
+WARNING: [RTGEN 206-101] Register 'lfsr_V' is power-on initialization.
+INFO: [RTGEN 206-100] Bundling port 'return' to AXI-Lite port AXILiteS.
+INFO: [SYN 201-210] Renamed object name 'maxCut_currentSolution' to 'maxCut_currentSolbkb' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'maxCut_urem_29ns_4ns_29_33_seq_1' to 'maxCut_urem_29ns_cud' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'maxCut_urem_32ns_11ns_32_36_seq_1' to 'maxCut_urem_32ns_dEe' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'maxCut_sdiv_32ns_32ns_32_36_seq_1' to 'maxCut_sdiv_32ns_eOg' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'maxCut_mul_mul_8s_11ns_19_1_1' to 'maxCut_mul_mul_8sfYi' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'maxCut_mul_mul_8sfYi': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'maxCut_sdiv_32ns_eOg': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'maxCut_urem_29ns_cud': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'maxCut_urem_32ns_dEe': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'maxCut'.
+INFO: [HLS 200-111]  Elapsed time: 1.266 seconds; current allocated memory: 100.881 MB.
+INFO: [RTMG 210-282] Generating pipelined core: 'maxCut_urem_29ns_cud_div'
+INFO: [RTMG 210-282] Generating pipelined core: 'maxCut_urem_32ns_dEe_div'
+INFO: [RTMG 210-282] Generating pipelined core: 'maxCut_sdiv_32ns_eOg_div'
+INFO: [RTMG 210-278] Implementing memory 'maxCut_matrix_ram (RAM)' using distributed RAMs.
+INFO: [RTMG 210-278] Implementing memory 'maxCut_currentSolbkb_ram (RAM)' using distributed RAMs.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:03 ; elapsed = 00:00:22 . Memory (MB): peak = 157.984 ; gain = 75.898
+INFO: [SYSC 207-301] Generating SystemC RTL for maxCut.
+INFO: [VHDL 208-304] Generating VHDL RTL for maxCut.
+INFO: [VLOG 209-307] Generating Verilog RTL for maxCut.
+INFO: [HLS 200-112] Total elapsed time: 22.384 seconds; peak allocated memory: 100.881 MB.
+==============================================================
+File generated on Thu Nov 28 19:55:02 -0500 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg400-1'
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+==============================================================
+File generated on Tue Dec 03 21:06:38 -0500 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg400-1'
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'MaxCutHLS.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 102.684 ; gain = 20.367
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 102.684 ; gain = 20.367
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 112.219 ; gain = 29.902
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'lrand' into 'maxCut' (MaxCutHLS.cpp:46) automatically.
+INFO: [XFORM 203-602] Inlining function 'exp_approx' into 'maxCut' (MaxCutHLS.cpp:77) automatically.
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:01 ; elapsed = 00:00:10 . Memory (MB): peak = 116.273 ; gain = 33.957
+INFO: [XFORM 203-602] Inlining function 'lrand' into 'maxCut' (MaxCutHLS.cpp:46) automatically.
+INFO: [XFORM 203-602] Inlining function 'exp_approx' into 'maxCut' (MaxCutHLS.cpp:77) automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (MaxCutHLS.cpp:50:24) to (MaxCutHLS.cpp:67:31) in function 'maxCut'... converting 3 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'maxCut' (MaxCutHLS.cpp:21)...9 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:10 . Memory (MB): peak = 142.387 ; gain = 60.070
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:10 . Memory (MB): peak = 143.457 ; gain = 61.141
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'maxCut' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'maxCut' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 10.497 seconds; current allocated memory: 96.093 MB.
+INFO: [HLS 200-434] Only 0 loops out of a total 9 loops have been pipelined in this design.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.285 seconds; current allocated memory: 97.479 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'maxCut' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/input_stream_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/input_stream_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/input_stream_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/input_stream_V_user_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/input_stream_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/input_stream_V_id_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/input_stream_V_dest_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/output_stream_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/output_stream_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/output_stream_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/output_stream_V_user_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/output_stream_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/output_stream_V_id_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/output_stream_V_dest_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on function 'maxCut' to 's_axilite & ap_ctrl_hs'.
+WARNING: [RTGEN 206-101] Register 'lfsr_V' is power-on initialization.
+INFO: [RTGEN 206-100] Bundling port 'return' to AXI-Lite port AXILiteS.
+INFO: [SYN 201-210] Renamed object name 'maxCut_currentSolution' to 'maxCut_currentSolbkb' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'maxCut_urem_29ns_4ns_29_33_seq_1' to 'maxCut_urem_29ns_cud' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'maxCut_urem_32ns_11ns_32_36_seq_1' to 'maxCut_urem_32ns_dEe' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'maxCut_sdiv_32ns_32ns_32_36_seq_1' to 'maxCut_sdiv_32ns_eOg' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'maxCut_mul_mul_8s_11ns_19_1_1' to 'maxCut_mul_mul_8sfYi' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'maxCut_mul_mul_8sfYi': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'maxCut_sdiv_32ns_eOg': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'maxCut_urem_29ns_cud': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'maxCut_urem_32ns_dEe': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'maxCut'.
+INFO: [HLS 200-111]  Elapsed time: 1.212 seconds; current allocated memory: 100.890 MB.
+INFO: [RTMG 210-282] Generating pipelined core: 'maxCut_urem_29ns_cud_div'
+INFO: [RTMG 210-282] Generating pipelined core: 'maxCut_urem_32ns_dEe_div'
+INFO: [RTMG 210-282] Generating pipelined core: 'maxCut_sdiv_32ns_eOg_div'
+INFO: [RTMG 210-278] Implementing memory 'maxCut_matrix_ram (RAM)' using distributed RAMs.
+INFO: [RTMG 210-278] Implementing memory 'maxCut_currentSolbkb_ram (RAM)' using distributed RAMs.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:03 ; elapsed = 00:00:16 . Memory (MB): peak = 157.820 ; gain = 75.504
+INFO: [SYSC 207-301] Generating SystemC RTL for maxCut.
+INFO: [VHDL 208-304] Generating VHDL RTL for maxCut.
+INFO: [VLOG 209-307] Generating Verilog RTL for maxCut.
+INFO: [HLS 200-112] Total elapsed time: 16.045 seconds; peak allocated memory: 100.890 MB.
+==============================================================
+File generated on Tue Dec 03 21:07:13 -0500 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg400-1'
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'MaxCutHLS.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:08 . Memory (MB): peak = 102.793 ; gain = 20.113
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:08 . Memory (MB): peak = 102.793 ; gain = 20.113
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 112.391 ; gain = 29.711
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'lrand' into 'maxCut' (MaxCutHLS.cpp:46) automatically.
+INFO: [XFORM 203-602] Inlining function 'exp_approx' into 'maxCut' (MaxCutHLS.cpp:77) automatically.
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 116.496 ; gain = 33.816
+INFO: [XFORM 203-602] Inlining function 'lrand' into 'maxCut' (MaxCutHLS.cpp:46) automatically.
+INFO: [XFORM 203-602] Inlining function 'exp_approx' into 'maxCut' (MaxCutHLS.cpp:77) automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (MaxCutHLS.cpp:50:24) to (MaxCutHLS.cpp:67:31) in function 'maxCut'... converting 3 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'maxCut' (MaxCutHLS.cpp:21)...9 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 142.715 ; gain = 60.035
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:10 . Memory (MB): peak = 143.730 ; gain = 61.051
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'maxCut' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'maxCut' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 9.962 seconds; current allocated memory: 96.093 MB.
+INFO: [HLS 200-434] Only 0 loops out of a total 9 loops have been pipelined in this design.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.286 seconds; current allocated memory: 97.464 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'maxCut' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/input_stream_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/input_stream_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/input_stream_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/input_stream_V_user_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/input_stream_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/input_stream_V_id_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/input_stream_V_dest_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/output_stream_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/output_stream_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/output_stream_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/output_stream_V_user_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/output_stream_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/output_stream_V_id_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'maxCut/output_stream_V_dest_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on function 'maxCut' to 's_axilite & ap_ctrl_hs'.
+WARNING: [RTGEN 206-101] Register 'lfsr_V' is power-on initialization.
+INFO: [RTGEN 206-100] Bundling port 'return' to AXI-Lite port AXILiteS.
+INFO: [SYN 201-210] Renamed object name 'maxCut_currentSolution' to 'maxCut_currentSolbkb' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'maxCut_urem_29ns_4ns_29_33_seq_1' to 'maxCut_urem_29ns_cud' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'maxCut_urem_32ns_11ns_32_36_seq_1' to 'maxCut_urem_32ns_dEe' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'maxCut_sdiv_32ns_32ns_32_36_seq_1' to 'maxCut_sdiv_32ns_eOg' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'maxCut_mul_mul_8s_11ns_19_1_1' to 'maxCut_mul_mul_8sfYi' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'maxCut_mul_mul_8sfYi': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'maxCut_sdiv_32ns_eOg': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'maxCut_urem_29ns_cud': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'maxCut_urem_32ns_dEe': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'maxCut'.
+INFO: [HLS 200-111]  Elapsed time: 1.211 seconds; current allocated memory: 100.890 MB.
+INFO: [RTMG 210-282] Generating pipelined core: 'maxCut_urem_29ns_cud_div'
+INFO: [RTMG 210-282] Generating pipelined core: 'maxCut_urem_32ns_dEe_div'
+INFO: [RTMG 210-282] Generating pipelined core: 'maxCut_sdiv_32ns_eOg_div'
+INFO: [RTMG 210-278] Implementing memory 'maxCut_matrix_ram (RAM)' using distributed RAMs.
+INFO: [RTMG 210-278] Implementing memory 'maxCut_currentSolbkb_ram (RAM)' using distributed RAMs.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:03 ; elapsed = 00:00:15 . Memory (MB): peak = 158.129 ; gain = 75.449
+INFO: [SYSC 207-301] Generating SystemC RTL for maxCut.
+INFO: [VHDL 208-304] Generating VHDL RTL for maxCut.
+INFO: [VLOG 209-307] Generating Verilog RTL for maxCut.
+INFO: [HLS 200-112] Total elapsed time: 15.427 seconds; peak allocated memory: 100.890 MB.
+==============================================================
+File generated on Tue Dec 03 21:07:47 -0500 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg400-1'
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.

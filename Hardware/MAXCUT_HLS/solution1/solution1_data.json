@@ -22,7 +22,7 @@
     "ClockPeriod": "10",
     "IsCombLogic": "0",
     "II": "x",
-    "Latency": "281",
+    "Latency": "249",
     "Uncertainty": "1.25"
   },
   "Xdc": {"OocClocks": ["create_clock -name ap_clk -period 10.000 [get_ports ap_clk]"]},
@@ -44,10 +44,9 @@
       "impl\/vhdl\/maxCut_currentSolbkb.vhd",
       "impl\/vhdl\/maxCut_matrix.vhd",
       "impl\/vhdl\/maxCut_mul_mul_8sfYi.vhd",
-      "impl\/vhdl\/maxCut_mul_mul_14g8j.vhd",
-      "impl\/vhdl\/maxCut_sdiv_21ns_dEe.vhd",
-      "impl\/vhdl\/maxCut_srem_32ns_cud.vhd",
-      "impl\/vhdl\/maxCut_urem_32ns_eOg.vhd",
+      "impl\/vhdl\/maxCut_sdiv_32ns_eOg.vhd",
+      "impl\/vhdl\/maxCut_urem_29ns_cud.vhd",
+      "impl\/vhdl\/maxCut_urem_32ns_dEe.vhd",
       "impl\/vhdl\/maxCut.vhd"
     ],
     "Verilog": [
@@ -55,10 +54,9 @@
       "impl\/verilog\/maxCut_currentSolbkb.v",
       "impl\/verilog\/maxCut_matrix.v",
       "impl\/verilog\/maxCut_mul_mul_8sfYi.v",
-      "impl\/verilog\/maxCut_mul_mul_14g8j.v",
-      "impl\/verilog\/maxCut_sdiv_21ns_dEe.v",
-      "impl\/verilog\/maxCut_srem_32ns_cud.v",
-      "impl\/verilog\/maxCut_urem_32ns_eOg.v",
+      "impl\/verilog\/maxCut_sdiv_32ns_eOg.v",
+      "impl\/verilog\/maxCut_urem_29ns_cud.v",
+      "impl\/verilog\/maxCut_urem_32ns_dEe.v",
       "impl\/verilog\/maxCut.v"
     ],
     "SwDriver": [
@@ -72,7 +70,7 @@
       "impl\/misc\/drivers\/maxCut_v0_0\/src\/xmaxcut_sinit.c"
     ],
     "Misc": ["impl\/misc\/logo.png"],
-    "DesignXml": "C:\/Users\/shera\/Documents\/MaxCut-Inf8503\/Hardware\/MAXCUT_HLS\/solution1\/.autopilot\/db\/maxCut.design.xml"
+    "DesignXml": "C:\/Users\/shera\/Documents\/Inf8085\/Hardware\/MAXCUT_HLS\/solution1\/.autopilot\/db\/maxCut.design.xml"
   },
   "SubcoreInfo": {
     "HasXpmMemory": false,
@@ -603,56 +601,56 @@
     "output_stream_V_data_V": {
       "interfaceRef": "output_stream",
       "dir": "out",
-      "firstOutLatency": "117"
+      "firstOutLatency": "126"
     },
     "output_stream_V_dest_V": {
       "interfaceRef": "output_stream",
       "dir": "out",
-      "firstOutLatency": "117"
+      "firstOutLatency": "126"
     },
     "output_stream_V_keep_V": {
       "interfaceRef": "output_stream",
       "dir": "out",
-      "firstOutLatency": "117"
+      "firstOutLatency": "126"
     },
     "output_stream_V_strb_V": {
       "interfaceRef": "output_stream",
       "dir": "out",
-      "firstOutLatency": "117"
+      "firstOutLatency": "126"
     },
     "output_stream_V_user_V": {
       "interfaceRef": "output_stream",
       "dir": "out",
-      "firstOutLatency": "117"
+      "firstOutLatency": "126"
     },
     "output_stream_V_last_V": {
       "interfaceRef": "output_stream",
       "dir": "out",
-      "firstOutLatency": "117"
+      "firstOutLatency": "126"
     },
     "output_stream_V_id_V": {
       "interfaceRef": "output_stream",
       "dir": "out",
-      "firstOutLatency": "117"
+      "firstOutLatency": "126"
     }
   },
   "ModuleInfo": {
     "Hierarchy": {"ModuleName": "maxCut"},
     "Metrics": {"maxCut": {
         "Latency": {
-          "LatencyBest": "281",
-          "LatencyAvg": "162743",
-          "LatencyWorst": "345280",
-          "PipelineIIMin": "282",
-          "PipelineIIMax": "345281",
-          "PipelineII": "282 ~ 345281",
+          "LatencyBest": "249",
+          "LatencyAvg": "14375249",
+          "LatencyWorst": "38250289",
+          "PipelineIIMin": "250",
+          "PipelineIIMax": "38250290",
+          "PipelineII": "250 ~ 38250290",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
         "Timing": {
           "Target": "10.00",
           "Uncertainty": "1.25",
-          "Estimate": "8.702"
+          "Estimate": "8.510"
         },
         "Loops": [
           {
@@ -700,19 +698,19 @@
           {
             "Name": "Loop 5",
             "TripCount": "",
-            "LatencyMin": "109",
-            "LatencyMax": "345107",
-            "Latency": "109 ~ 345107",
+            "LatencyMin": "77",
+            "LatencyMax": "38250116",
+            "Latency": "77 ~ 38250116",
             "PipelineII": "",
-            "PipelineDepthMin": "109",
-            "PipelineDepthMax": "138",
-            "PipelineDepth": "109 ~ 138",
+            "PipelineDepthMin": "77",
+            "PipelineDepthMax": "153",
+            "PipelineDepth": "77 ~ 153",
             "Loops": [{
                 "Name": "Loop 5.1",
                 "TripCount": "6",
-                "Latency": "30",
+                "Latency": "36",
                 "PipelineII": "",
-                "PipelineDepth": "5"
+                "PipelineDepth": "6"
               }]
           },
           {
@@ -725,9 +723,9 @@
         ],
         "Area": {
           "BRAM_18K": "0",
-          "DSP48E": "32",
-          "FF": "2651",
-          "LUT": "3850"
+          "DSP48E": "38",
+          "FF": "2667",
+          "LUT": "3646"
         }
       }}
   },
@@ -741,7 +739,7 @@
   },
   "GenData": {
     "DataVersion": "0.1",
-    "Time": "2024-11-23 16:54:00 -0500",
+    "Time": "2024-12-03 21:07:48 -0500",
     "ToolName": "vivado_hls",
     "ToolVersion": "2018.3"
   }

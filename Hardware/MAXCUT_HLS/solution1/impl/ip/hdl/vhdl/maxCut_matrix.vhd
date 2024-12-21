@@ -1,5 +1,5 @@
 -- ==============================================================
--- File generated on Sat Nov 23 16:53:44 -0500 2024
+-- File generated on Tue Dec 03 21:07:26 -0500 2024
 -- Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
 -- SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 -- IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
@@ -13,7 +13,7 @@ use ieee.std_logic_unsigned.all;
 entity maxCut_matrix_ram is 
     generic(
             MEM_TYPE    : string := "distributed"; 
-            DWIDTH     : integer := 24; 
+            DWIDTH     : integer := 20; 
             AWIDTH     : integer := 6; 
             MEM_SIZE    : integer := 36
     ); 
@@ -74,7 +74,7 @@ use IEEE.std_logic_1164.all;
 
 entity maxCut_matrix is
     generic (
-        DataWidth : INTEGER := 24;
+        DataWidth : INTEGER := 20;
         AddressRange : INTEGER := 36;
         AddressWidth : INTEGER := 6);
     port (
